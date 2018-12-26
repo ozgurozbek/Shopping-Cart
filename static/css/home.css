@@ -1,29 +1,33 @@
-
 #itemImage {
 	height: 200px;
-	width: 150px;
+	width: 200px;
 }
 
 .display {
-	margin-top: 20px;
-	margin-left: 20px;
-	margin-right: 20px;
-	margin-bottom: 20px;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	background-color:rgb(148, 148, 148);
 }
 
 table {
-	border-spacing: 20px;
+	margin-left: 5%;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 25px;
+	border-spacing: 0px;
 }
 
 #productName {
-	text-align: center;
+	text-align: left;
 	font-weight: bold;
 }
 
 #productPrice {
-	text-align: center;
+	text-align: right;
 }
 
 .displayCategory ul li {
-	font-size: 20px;
+	font-size: auto;
 }
