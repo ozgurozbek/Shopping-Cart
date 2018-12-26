@@ -1,27 +1,55 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-<title>Remove</title>
-<link rel="stylesheet" href={{url_for('static', filename='css/remove.css')}}>
-</link>
+	<title>Remove</title>
+	<link rel="stylesheet" href={{url_for('static', filename='css/remove.css')}} />
+	<link rel="stylesheet" href={{url_for('static', filename='css/topStyle.css') }} />
 </head>
-<body>
-<table>
-	{% for i in range(6) %}
-	<tr>
-		{% for row in data %}
-		<td>
-			<a href="/removeItem?productId={{row[0]}}">
-			{% if i == 4 %}
-				<img src={{ url_for('static', filename='uploads/' + row[i]) }} id="itemImage" />
-			{% else %}
-				{{row[i]}}
-			{% endif %}
-			</a>
-		</td>
+
+<body style="font-family:Roboto;">
+	<div id="title" style="background-color:rgb(155, 85, 0)">
+		<a href="/">
+			<img id="logo" src={{ url_for('static', filename='images/logo.png') }} />
+		</a>
+
+		{% if not loggedIn %}
+		<div id="signInButton">
+			<a class="link" href="/loginForm"></a>
+		</div>
+		{% else %}
+		<div class="dropdown">
+			<button class="dropbtn">Hello, <br>{{firstName}}</button>
+			<div class="dropdown-content">
+				<a href="/account/orders">Your orders</a>
+				<a href="/account/profile">Your profile</a>
+				<hr>
+				<a href="/logout">Sign Out</a>
+			</div>
+		</div>
+		{% endif %}
+		<div id="kart">
+			<a class="link" href="/cart"></a>
+		</div>
+	</div>
+	<div style="padding-top: 20px; padding-bottom: 20px; background-color:rgb(148, 148, 148);">
+	<table>
+		{% for i in range(6) %}
+		<tr>
+			{% for row in data %}
+			<td>
+				<a style="color: rgb(155, 85, 0); text-decoration: none" href="/removeItem?productId={{row[0]}}">
+					{% if i == 4 %}
+					<img src={{ url_for('static', filename='uploads/' + row[i]) }} id="itemImage" />
+					{% else %}
+					{{row[i]}}
+					{% endif %}
+				</a>
+			</td>
+			{% endfor %}
+		</tr>
 		{% endfor %}
-	</tr>
-	{% endfor %}
-</table>
+	</table></div>
 </body>
+
 </html>

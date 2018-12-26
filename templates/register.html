@@ -1,33 +1,62 @@
 <html>
+
 <head>
-<title>Registration</title>
-<script type="text/javascript" src="{{ url_for('static', filename = 'js/validateForm.js') }}">
-</script>
+    <title>Registration</title>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/validateForm.js') }}">
+    </script>
+    <link rel="stylesheet" href={{url_for('static', filename='css/topStyle.css') }} />
+    <link rel="stylesheet" href={{url_for('static', filename='css/home.css') }} />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
 </head>
-<body>
-<form action="/register" method="POST" onsubmit="return validate()">
-    <p>Email: <input type="email" name="email"></p>
 
-    <P>Password: <input type="password" name="password" id="password" required></p>
+<body style="font-family:Roboto;">
+    <div id="title">
+        <a href="/">
+            <img id="logo" src={{ url_for('static', filename='images/logo.png') }} />
+        </a>
 
-    <p>Confirm Password: <input type="password" name="cpassword" id="cpassword"></p>
+        {% if not loggedIn %}
+        <div id="signInButton">
+            <a class="link" href="/loginForm"></a>
+        </div>
+        {% else %}
+        <div class="dropdown">
+            <button class="dropbtn">Hello, <br>{{firstName}}</button>
+            <div class="dropdown-content">
+                <a href="/account/orders">Your orders</a>
+                <a href="/account/profile">Your profile</a>
+                <hr>
+                <a href="/logout">Sign Out</a>
+            </div>
+        </div>
+        {% endif %}
+        <div id="kart">
+            <a class="link" href="/cart"></a>
+        </div>
+    </div>
+    <div class="display">
+        <form action="/register" method="POST" onsubmit="return validate()">
+            <p>Email: <input type="email" name="email"></p>
 
-    <p>First Name: <input type="text" name="firstName"></p>
-    <p>Last Name: <input type="text" name="lastName"></p>
-    <p>Address Line 1: <input type="text" name="address1"></p>
-    <p>Address Line 2: <input type="text" name="address2"></p>
-    <p>Zipcode: <input type="text" name="zipcode"></p>
-    <p>City: <input type="text" name="city"></p>
-    <p>State: <input type="text" name="state"></p>
-    <p>Country: <input type="text" name="country"></p>
-    <p>Phone Number: <input type="text" name="phone"></p>
+            <P>Password: <input type="password" name="password" id="password" required></p>
 
-    <p><input type="submit" value="Register"></p>
+            <p>Confirm Password: <input type="password" name="cpassword" id="cpassword"></p>
 
-    <a href="/loginForm">Login here</a>
-</form>
+            <p>First Name: <input type="text" name="firstName"></p>
+            <p>Last Name: <input type="text" name="lastName"></p>
+            <p>Address Line 1: <input type="text" name="address1"></p>
+            <p>Address Line 2: <input type="text" name="address2"></p>
+            <p>Zipcode: <input type="text" name="zipcode"></p>
+            <p>City: <input type="text" name="city"></p>
+            <p>State: <input type="text" name="state"></p>
+            <p>Country: <input type="text" name="country"></p>
+            <p>Phone Number: <input type="text" name="phone"></p>
+
+            <p><input type="submit" value="Register"></p>
+
+            <a style="color: rgb(155, 85, 0); text-decoration: none" href="/loginForm">Login here</a>
+        </form>
+    </div>
 </body>
+
 </html>
-
-
-

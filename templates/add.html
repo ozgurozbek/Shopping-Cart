@@ -1,23 +1,52 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<title>Admin</title>
-</head>
-<body>
-<h2>Add items</h2>
-<form action="/addItem" method="POST" enctype="multipart/form-data">
-	Name: <input type="text" name="name"><br>
-	Price: <input type="text" name="price"><br>
-	Description: <textarea name="description" rows=3 cols="40"></textarea><br>
-	Image: <input type="file" name="image"><br>
-	Stock: <input type="text" name="stock"><br>
-	Category: <select name="category">
-		{% for row in categories %}
-			<option value="{{row[0]}}">{{row[1]}}</option>
-		{% endfor %}
-	</select><br>
-	<input type="submit">
-</form>
-</body>
-</html>
 
+<head>
+	<title>Admin Add</title>
+	<link rel="stylesheet" href={{url_for('static', filename='css/topStyle.css') }} />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+</head>
+
+<body style="font-family:Roboto;">
+	<div id="title" style="background-color:rgb(155, 85, 0)">
+		<a href="/">
+			<img id="logo" src={{ url_for('static', filename='images/logo.png') }} />
+		</a>
+
+		{% if not loggedIn %}
+		<div id="signInButton">
+			<a class="link" href="/loginForm"></a>
+		</div>
+		{% else %}
+		<div class="dropdown">
+			<button class="dropbtn">Hello, <br>{{firstName}}</button>
+			<div class="dropdown-content">
+				<a href="/account/orders">Your orders</a>
+				<a href="/account/profile">Your profile</a>
+				<hr>
+				<a href="/logout">Sign Out</a>
+			</div>
+		</div>
+		{% endif %}
+		<div id="kart">
+			<a class="link" href="/cart"></a>
+		</div>
+	</div>
+	<div style="padding-top: 20px; padding-bottom: 20px; background-color:rgb(148, 148, 148);">
+		<h2 style="color: rgb(155, 85, 0)">Add items</h2>
+		<form action="/addItem" method="POST" enctype="multipart/form-data">
+			Name: <input type="text" name="name"><br>
+			Price: <input type="text" name="price"><br>
+			Description: <textarea name="description" rows=3 cols="40"></textarea><br>
+			Image: <input type="file" name="image"><br>
+			Category: <select name="category">
+				{% for row in categories %}
+				<option value="{{row[0]}}">{{row[1]}}</option>
+				{% endfor %}
+			</select><br>
+			<input type="submit">
+		</form>
+	</div>
+</body>
+
+</html>

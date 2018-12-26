@@ -1,10 +1,13 @@
+<!DOCTYPE HTML>
 <html>
 
 <head>
-	<title>Change Password</title>
-	<script src={{ url_for('static', filename='js/changePassword.js') }}></script>
-	<link rel="stylesheet" href={{url_for('static', filename='css/topStyle.css') }} />
+	<title>Order List</title>
+	<link rel="stylesheet" href={{ url_for('static', filename='css/editProfile.css') }} />
+	<link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }} />
+	<link rel="stylesheet" href={{ url_for('static', filename='css/home.css') }} />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+</head>
 </head>
 
 <body style="font-family:Roboto;">
@@ -35,15 +38,11 @@
 			</a>
 		</div>
 	</div>
-	<div style="padding-top: 20px; padding-bottom: 20px; background-color:rgb(148, 148, 148);">
-	<h2 style="color: rgb(155, 85, 0)">Change password</h2>
-	<p>{{ msg }}</p>
-	<form action={{ url_for('changePassword') }} method="POST" onsubmit="return validate()">
-		<p>Old Password: <input type="password" name="oldpassword"></p>
-		<p>New Password: <input type="password" name="newpassword" id="newpassword"></p>
-		<p>Confirm Password: <input type="password" name="cpassword" id="cpassword"></p>
-		<input type="submit" value="Save">
-	</form></div>
+
+	<div class="display">
+		<h2 style="color: rgb(155, 85, 0)">Bought Items</h2>
+		<p>Ids: {{productId}} </p>
+	</div>
 </body>
 
 </html>

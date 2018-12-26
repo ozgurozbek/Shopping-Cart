@@ -2,10 +2,12 @@
 <html>
 
 <head>
-	<title>{{categoryName}} Products</title>
+	<title>Edit Profile </title>
+	<link rel="stylesheet" href={{ url_for('static', filename='css/editProfile.css') }} />
 	<link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }} />
 	<link rel="stylesheet" href={{ url_for('static', filename='css/home.css') }} />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+</head>
 </head>
 
 <body style="font-family:Roboto;">
@@ -37,35 +39,18 @@
 		</div>
 	</div>
 
-	<div style="padding-top: 20px; padding-bottom: 20px; background-color:rgb(148, 148, 148);">
-		<h2 style="color: rgb(155, 85, 0)">Showing all products of Category {{categoryName}}:</h2>
-		{% for itemData in data %}
-		<table>
-			<tr id="productName">
-				{% for row in itemData %}
-				<td>
-					{{row[1]}}
-				</td>
-				{% endfor %}
-			</tr>
-			<tr id="productImage">
-				{% for row in itemData %}
-				<td>
-					<a href="/productDescription?productId={{row[0]}}">
-						<img src={{ url_for('static', filename='uploads/' + row[3]) }} id="itemImage" />
-					</a>
-				</td>
-				{% endfor %}
-			</tr>
-			<tr id="productPrice">
-				{% for row in itemData %}
-				<td>
-					{{row[2]}}
-				</td>
-				{% endfor %}
-			</tr>
-		</table>
-		{% endfor %}
+	<div class="display">
+		<h2 style="color: rgb(155, 85, 0)">Your profile</h2>
+		<p>Email: {{profileData[1]}}</p>
+		<p>First Name: {{profileData[2]}}</p>
+		<p>Last Name: {{profileData[3]}}</p>
+		<p>Address 1: {{profileData[4]}}</p>
+		<p>Address 2: {{profileData[5]}}</p>
+		<p>Zip Code: {{profileData[6]}}</p>
+		<p>City: {{profileData[7]}}</p>
+		<p>State: {{profileData[8]}}</p>
+		<p>Country: {{profileData[9]}}</p>
+		<p>Phone Number: {{profileData[10]}}</p>
 	</div>
 </body>
 
