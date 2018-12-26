@@ -13,3 +13,4 @@ A simple E-commerce website using Flask.
 
 ## Additional Info ##
 This project is forked from HarshShah1997/Shopping-Cart
+Icons from Flaticon
