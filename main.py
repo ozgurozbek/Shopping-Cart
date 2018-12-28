@@ -41,7 +41,7 @@ def admin():
     if 'email' not in session:
         return redirect(url_for('loginForm'))
     loggedIn, firstName, noOfItems = getLoginDetails()
-    if firstName != "ozgur":
+    if firstName != "admin":
         return redirect(url_for('root'))
     email = session['email']
     with sqlite3.connect('database.db') as conn:
@@ -104,7 +104,7 @@ def remove():
     if 'email' not in session:
         return redirect(url_for('loginForm'))
     loggedIn, firstName, noOfItems = getLoginDetails()
-    if firstName != "ozgur":
+    if firstName != "admin":
         return redirect(url_for('root'))
     with sqlite3.connect('database.db') as conn:
         cur = conn.cursor()
